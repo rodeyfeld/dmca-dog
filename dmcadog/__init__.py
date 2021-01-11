@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from . import dog
 
 
 def create_app(test_config=None):
@@ -24,9 +25,10 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route('/')
-    def home():
+    @app.route('/hello')
+    def hello():
         return 'home'
 
+    app.register_blueprint(dog.bp)
 
     return app

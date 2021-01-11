@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    {% block header %}
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='dog_style.css')}}">
+        <nav>
+            <h1>DMCA Dog</h1>
+            <ul>
+                <li>link1</li>
+                <li>link2</li>
+                <li>link3</li>
+                <li>link4</li>
+            </ul>
+        </nav>
+    {% endblock header %}
+</head>
+<body>
+    {% block content %}{% endblock content %}
+</body>
+</html>
