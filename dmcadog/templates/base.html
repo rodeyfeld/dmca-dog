@@ -5,18 +5,19 @@
     {% block header %}
         <meta charset="UTF-8">
         <link rel="stylesheet" href="{{ url_for('static', filename='dog_style.css')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+	    <link rel="stylesheet" type="text/css" href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"/>
         <nav>
-            <h1>DMCA Dog</h1>
-            <ul>
-                <li>link1</li>
-                <li>link2</li>
-                <li>link3</li>
-                <li>link4</li>
+            <ul class="topnav" id="baseTopNav">
+                <li class="brand"><a href="#">DMCA Dog</a></li>
+                <li><a href="#">Search</a></li>
             </ul>
         </nav>
     {% endblock header %}
 </head>
 <body>
     {% block content %}{% endblock content %}
+<script src="https://rawgit.com/outboxcraft/beauter/master/beauter.min.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask
-from . import dog
+from . import lookup, home
 
 
 def create_app(test_config=None):
@@ -29,6 +29,7 @@ def create_app(test_config=None):
     def hello():
         return 'home'
 
-    app.register_blueprint(dog.bp)
+    app.register_blueprint(home.bp)
+    app.register_blueprint(lookup.bp)
 
     return app

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbo _teal">
+        <h3>DMCA Dog</h3>
+        <p>A Digital Millennium Copyright Act checker</p>
+    </div>
+
+    <div class="row" style="padding-top:50px">
+        <div class="col m4" ></div>
+        <div class="col m4" style="text-align:center">
+            <h4>Is my content safe to stream?</h4>
+            <form action="" method="post">
+                <label for="dmcasearch">DMCA Search</label>
+                <input class="_width50" type="search" placeholder="Media lookup" id="dmcasearch" name="search">
+                <input class="_teal button" type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="col m4"></div>
+    </div>
+{% endblock content %}

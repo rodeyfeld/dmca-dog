@@ -1,11 +1,11 @@
 import functools
 from flask import Blueprint, request, render_template
 
-bp = Blueprint('dog', __name__, url_prefix='/dog')
+bp = Blueprint('lookup', __name__, url_prefix='/')
 
 
 @bp.route('/lookup', methods=('GET', 'POST'))
-def dog():
+def lookup():
     if request.method == 'POST':
         # TODO: Process frontend input
         pass
