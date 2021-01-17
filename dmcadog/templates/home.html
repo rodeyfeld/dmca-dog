@@ -10,12 +10,28 @@
         <div class="col m4" ></div>
         <div class="col m4" style="text-align:center">
             <h4>Is my content safe to stream?</h4>
-            <form action="" method="post">
+{#            <form action="" method="post">#}
                 <label for="dmcasearch">DMCA Search</label>
-                <input class="_width50" type="search" placeholder="Media lookup" id="dmcasearch" name="search">
-                <input class="_teal button" type="submit" value="Submit">
-            </form>
+                <input class="_width50" type="search" placeholder="Media lookup" id="dmcaquery" name="search">
+                <input class="_teal button" type="submit" value="Submit" id="dmcasubmit">
+{#            </form>#}
         </div>
         <div class="col m4"></div>
     </div>
+
+    <script>
+        const query_elem = document.querySelector("#dmcaquery")
+        const submit_elem = document.querySelector("#dmcasubmit")
+        submit_elem.addEventListener("click", () => {
+            const query = query_elem.value;
+            console.log(query);
+            const request = $.ajax({
+              url: "/lookup",
+              type: "POST",
+              data: {query : query},
+              dataType: "html"
+            });
+        });
+
+    </script>
 {% endblock content %}

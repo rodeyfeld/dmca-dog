@@ -4,9 +4,9 @@ from flask import Blueprint, request, render_template
 bp = Blueprint('lookup', __name__, url_prefix='/')
 
 
-@bp.route('/lookup', methods=('GET', 'POST'))
+@bp.route('/lookup/', methods=('POST', 'GET'))
 def lookup():
     if request.method == 'POST':
-        # TODO: Process frontend input
+        print(request.json['query'])
         pass
     return render_template('lookup.html')
