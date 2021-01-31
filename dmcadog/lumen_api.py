@@ -1,3 +1,5 @@
+import os
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -10,6 +12,7 @@ class LumenAPI:
 
     def __init__(self):
         self.base_url: str = "https://lumendatabase.org/notices/search"
+        self.bot_name: str = os.environ.get("BOT_NAME")
 
     def fetch(self, query: str) -> str:
         """
@@ -20,10 +23,11 @@ class LumenAPI:
         params = {
             'utf8': '✓',
             'country_code_facet': 'US',
-            'term': query,
+            'title': query,
+            'term-require-all': "true"
         }
         headers = {
-            'User-agent': 'my_bot',
+            'User-Agent': f"{self.bot_name}"
         }
         response = requests.get(self.base_url, params=params, headers=headers)
         return response.text
