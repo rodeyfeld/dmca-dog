@@ -10,16 +10,29 @@
         <div class="col m4" ></div>
         <div class="col m4" style="text-align:center">
             <h4>Is my content safe to stream?</h4>
+            <div class="row">
+                <div class="col m6">
                 <label for="dmcasearch">DMCA Search</label>
-                <input class="_width50" type="search" placeholder="Media lookup" id="dmcaquery" name="search">
-                <input class="_teal button" type="submit" value="Submit" id="dmcasubmit">
+                <input  type="search" placeholder="Media lookup" id="dmcaquery" name="search">
+                </div>
+
+                <div class="col m6" id="loading-container" style="margin-top: 30px;">
+                    <img src="{{url_for('static',  filename='dog_antics.gif')}}" style="max-width: 25%" />
+                </div>
+                <div class="col m6" id="search-container" style="margin-top: 30px">
+                    <input class="_teal button" type="submit" value="Submit" id="dmcasubmit">
+                </div>
+            </div>
         </div>
         <div class="col m4"></div>
     </div>
-    <div class="row" id="results-container">
+    <div class="row _teal" id="complete-container">
         <div class="col m4"></div>
         <div class="col m4">
-            <h5 id="results-total"></h5>
+            <h5 style="text-align: center;">Search Results</h5>
+            <div id="complete-container">
+                <span>Total Results: </span><span id="results-total"></span>
+            </div>
         </div>
         <div class="col m4"></div>
     </div>
@@ -28,6 +41,11 @@
         const query_elem = document.querySelector("#dmcaquery")
         const submit_elem = document.querySelector("#dmcasubmit")
         const results_total_elem = document.querySelector("#results-total")
+        const search_container = document.querySelector("#search-container")
+        const loading_container = document.querySelector("#loading-container")
+        const complete_container = document.querySelector("#complete-container")
+        loading_container.style.display = 'none'
+        {#complete_container.style.display = 'none'#}
         submit_elem.addEventListener("click", () => {
             const query = query_elem.value;
             $.ajax({
@@ -35,13 +53,20 @@
             url : "/lookup",
             data: JSON.stringify(query),
             contentType: 'application/json;charset=UTF-8',
+            beforeSend: function(){
+                search_container.style.display = 'none'
+                loading_container.style.display = 'block'
+                complete_container.style.display = 'none'
+                },
             success: function(result) {
-                    results_total_elem.innerHTML = result;
+                loading_container.style.display = 'none'
+                search_container.style.display = 'block'
+                complete_container.style.display = 'block'
+                results_total_elem.innerHTML = result;
                 }
             });
         });
 
-        {#const processResults#}
 
     </script>
 {% endblock content %}
